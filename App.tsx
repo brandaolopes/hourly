@@ -1,20 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { GluestackUIProvider, Text, Box } from '@gluestack-ui/themed';
+import { config } from '@gluestack-ui/config'; // Optional if you want to use default theme
+
+import { useFonts, Nunito_800ExtraBold, Nunito_500Medium, Nunito_400Regular } from '@expo-google-fonts/nunito';
+import { Loading } from './src/components/Loading';
+
 
 export default function App() {
+
+  const [fontsLoaded] = useFonts({Nunito_800ExtraBold, Nunito_500Medium, Nunito_400Regular})
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <GluestackUIProvider config={config}>
+        <StatusBar style='light' />
+        
+        {
+          !fontsLoaded ? <Loading /> : <Text fontFamily='Nunito_500Medium' fontSize={24}>Nenhuma fonte carregada</Text>
+        }
+
+      </GluestackUIProvider>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
