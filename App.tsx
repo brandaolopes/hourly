@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
-import { GluestackUIProvider, Text, Box } from '@gluestack-ui/themed';
+import { GluestackUIProvider } from '@gluestack-ui/themed';
 import { config } from '@gluestack-ui/config'; // Optional if you want to use default theme
 
 import { useFonts, Nunito_800ExtraBold, Nunito_500Medium, Nunito_400Regular } from '@expo-google-fonts/nunito';
 import { Loading } from './src/components/Loading';
+import { AppRoutes } from './src/routes/app.routes';
 
 
 export default function App() {
@@ -18,7 +19,7 @@ export default function App() {
         <StatusBar style='light' />
         
         {
-          !fontsLoaded ? <Loading /> : <Text fontFamily='Nunito_500Medium' fontSize={24}>Nenhuma fonte carregada</Text>
+          fontsLoaded ? <AppRoutes /> : <Loading />
         }
 
       </GluestackUIProvider>
