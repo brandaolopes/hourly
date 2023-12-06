@@ -16,7 +16,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <GluestackUIProvider config={config}>
-        <StatusBar style='light' />
+        <StatusBar style='light' translucent/>
         
         {
           fontsLoaded ? <AppRoutes /> : <Loading />

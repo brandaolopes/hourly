@@ -35,6 +35,9 @@ export function AppRoutes() {
                     options={{
                         tabBarIcon: ({ color }) => <Clock3 color={color} />,
                         tabBarLabel: "Relógio",
+                        tabBarLabelStyle: {
+                            fontSize: 12
+                        }
                     }}
                  />
 
@@ -44,6 +47,9 @@ export function AppRoutes() {
                     options={{
                         tabBarIcon: ({ color }) => <CircleDollarSign color={color} />,
                         tabBarLabel: "Bônus",
+                        tabBarLabelStyle: {
+                            fontSize: 12
+                        }
                     }}
                  />
 
@@ -53,6 +59,9 @@ export function AppRoutes() {
                     options={{
                         tabBarIcon: ({ color }) => <Back color={color} />,
                         tabBarLabel: "Histórico",
+                        tabBarLabelStyle: {
+                            fontSize: 12
+                        }
                     }}
                  />
                 <Screen 
@@ -61,6 +70,9 @@ export function AppRoutes() {
                     options={{
                         tabBarIcon: ({ color }) => <Settings color={color} />,
                         tabBarLabel: "Configurações",
+                        tabBarLabelStyle: {
+                            fontSize: 12
+                        }
                     }}
                  />
             </Navigator>
