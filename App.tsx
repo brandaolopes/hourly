@@ -11,12 +11,12 @@ import { AppRoutes } from './src/routes/app.routes';
 export default function App() {
 
   const [fontsLoaded] = useFonts({Nunito_800ExtraBold, Nunito_500Medium, Nunito_400Regular})
-
+  
 
   return (
     <NavigationContainer>
       <GluestackUIProvider config={config}>
-        <StatusBar style='light' translucent/>
+        <StatusBar style='auto' translucent/>
         
         {
           fontsLoaded ? <AppRoutes /> : <Loading />
