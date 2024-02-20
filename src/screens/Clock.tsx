@@ -1,8 +1,9 @@
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Text, 
         Center, 
         HStack, 
-        Divider, 
+        Divider,
+        FlatList, 
         Button, 
         ButtonText, 
         VStack, 
@@ -17,11 +18,22 @@ import { Text,
         ModalFooter, 
         CloseIcon } from '@gluestack-ui/themed';
 import { ClockBox } from '../components/ClockBox';
-import { WorkIn } from '../components/WorkIn';
-import { WorkOut } from '../components/WorkOut';	
+import { WorkStamp } from '../components/WorkStamp';
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br';
 
+type ItemWorkingData = {
+    id: string,
+    stamp: string,
+    isIn: boolean,
+}
+
+const workingData: ItemWorkingData[] = [
+    { id: "06:53:43", stamp: "06:53:42", isIn: true },
+    { id: "11:53:42", stamp: "11:53:42", isIn: false },
+    { id: "06:53:42", stamp: "06:53:42", isIn: true },
+    { id: "11:53:43", stamp: "11:53:42", isIn: false }
+]
 
 
 export function Clock() {
@@ -53,13 +65,14 @@ export function Clock() {
             <Divider w="95%" />
 
             <VStack flex={2}>
-                <WorkIn stamp="20:35" />
-                
-                <WorkOut stamp="22:05" />
+                <FlatList
+                    data={workingData}
+                    renderItem={({ item }) =>
+                        <WorkStamp stamp={item.stamp} isIn={item.isIn} />
+                    }
+                    keyExtractor={( item ) => item.id}
+                />
 
-                <WorkIn stamp='22:06' />
-
-                <WorkOut stamp="23:35" />
             </VStack>
 
             <Divider w="95%" />
